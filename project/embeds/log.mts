@@ -48,5 +48,5 @@ export function logImplementation(logMessage) {
 		}
 	}
 
-	log(assembledMessage)
+	log(assembledMessage.trimEnd())
 }
