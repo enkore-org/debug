@@ -5,36 +5,64 @@
 export function logImplementation(logMessage) {
 	const ENV_DEBUG_KEY = "ENKORE_DEBUG"
 
-	if (!globalThis) return;
-	if (!("console" in globalThis)) return;
-	if (!globalThis.console) return;
-	if (typeof globalThis.console.log !== "function") return;
-
-	let debugEnabled = false;
-
-	if (typeof window === "object") {
-		if (ENV_DEBUG_KEY in window) {
-			debugEnabled = true;
-		}
-	}
-	// @ts-ignore:next-line
-	else if (typeof process === "object") {
+	const debugEnabled = (() => {
 		// @ts-ignore:next-line
-		if (typeof process.env === "object") {
+		if (typeof process === "object") {
 			// @ts-ignore:next-line
-			if (ENV_DEBUG_KEY in process.env) {
-				debugEnabled = true;
+			if (typeof process.env === "object") {
+				// @ts-ignore:next-line
+				if (ENV_DEBUG_KEY in process.env) {
+					return true
+				}
 			}
 		}
+
+		if (typeof window === "object") {
+			if (ENV_DEBUG_KEY in window) {
+				return true
+			}
+		}
+
+		return false
+	})()
+
+	if (!debugEnabled) {
+		return
 	}
 
-	if (!debugEnabled) return;
+	// use process.stderr.write when available
+	const log = (() => {
+		// @ts-ignore:next-line
+		if (typeof process === "object") {
+			// @ts-ignore:next-line
+			if (typeof process.stderr === "object") {
+				// @ts-ignore:next-line
+				if (typeof process.stderr.write === "function") {
+					// @ts-ignore:next-line
+					return (msg) => {
+						// @ts-ignore:next-line
+						process.stderr.write(msg + "\n")
+					}
+				}
+			}
+		}
+
+		if (typeof globalThis === "object") {
+			if (typeof globalThis.console === "object") {
+				if (typeof globalThis.console.log === "function") {
+					// @ts-ignore:next-line
+					return (msg) => {
+						return globalThis.console.log(msg)
+					}
+				}
+			}
+		}
+
+		return () => {}
+	})()
 
 	const debugPrefix = "enkore debug: "
 	const padding = " ".repeat(debugPrefix.length)
-
-	// @ts-ignore:next-line
-	const log = (msg) => globalThis.console.log(msg)
 
 	const lines = logMessage.split("\n")
 
