@@ -1,7 +1,7 @@
-import {getEmbedAsString} from "@anio-software/enkore.target-js/project"
+import logImplementationSourceCode from "#~src/__logImplementation.str.ts"
 
 export function logCodeRaw(argument: string): string {
-	let implementation = getEmbedAsString("text://log.ts")
+	let implementation = logImplementationSourceCode
 
 	// convert export function into an IIFE
 	implementation = implementation
