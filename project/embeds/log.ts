@@ -1,5 +1,5 @@
 // NB: we don't do typing here because we need the
-// file's content to be stable (see project/export/logCode.mts why)
+// file's content to be stable (see project/export/logCode.ts why)
 
 // @ts-ignore:next-line
 export function logImplementation(logMessage) {

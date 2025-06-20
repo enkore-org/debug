@@ -1,4 +1,4 @@
-import {logImplementation} from "#~embeds/log.mts"
+import {logImplementation} from "#~embeds/log.ts"
 
 export function log(message: string) {
 	logImplementation(message)
