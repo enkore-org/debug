@@ -8,10 +8,5 @@
     "type": "git",
     "url": "git+https://github.com/enkore-org/debug.git"
   },
-  "type": "module",
-  "devDependencies": {
-    "@enkore-target/js-none": "^0.0.39",
-    "@enkore/core": "^0.6.7",
-    "enkore": "^0.0.24"
-  }
+  "type": "module"
 }
