@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "name": "@enkore/debug",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Debug logging package for all enkore projects.",
   "author": "Anio Software <info@anio.software>",
   "repository": {
