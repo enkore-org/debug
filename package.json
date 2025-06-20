@@ -8,5 +8,10 @@
     "type": "git",
     "url": "git+https://github.com/enkore-org/debug.git"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@anio-software/enkore": "^0.0.72",
+    "@anio-software/enkore.core": "^0.11.0",
+    "@anio-software/enkore.target-js": "^0.0.16-canary-edcbab89-a4331cc8"
+  }
 }
