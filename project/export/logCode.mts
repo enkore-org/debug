@@ -1,4 +1,4 @@
-import {getEmbedAsString} from "@enkore-target/js-none/project"
+import {getEmbedAsString} from "@anio-software/enkore.target-js/project"
 
 export function logCode(message: string): string {
 	let implementation = getEmbedAsString("text://log.mts")
