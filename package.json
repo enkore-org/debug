@@ -1,7 +1,7 @@
 {
   "private": true,
   "type": "module",
-  "name": "@anio-software/enkore.debug",
+  "name": "@anio-software/enkore-private.debug",
   "version": "0.0.6",
   "description": "Debug logging package for all enkore projects.",
   "author": "Anio Software <info@anio.software>",
