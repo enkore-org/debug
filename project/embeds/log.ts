@@ -17,7 +17,9 @@ export function logImplementation(logMessage) {
 			}
 		}
 
+		// @ts-expect-error
 		if (typeof window === "object") {
+			// @ts-expect-error
 			if (ENV_DEBUG_KEY in window) {
 				return true
 			}
@@ -48,10 +50,13 @@ export function logImplementation(logMessage) {
 		}
 
 		if (typeof globalThis === "object") {
+			// @ts-expect-error
 			if (typeof globalThis.console === "object") {
+				// @ts-expect-error
 				if (typeof globalThis.console.log === "function") {
 					// @ts-ignore:next-line
 					return (msg) => {
+						// @ts-expect-error
 						return globalThis.console.log(msg)
 					}
 				}
